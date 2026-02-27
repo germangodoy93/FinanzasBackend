@@ -1,5 +1,7 @@
 # FinanzasCO Backend
 
+# FinanzasCO Backend
+
 This is a minimal Express-based backend to accompany the frontend React demo.
 
 ## Getting started
@@ -10,7 +12,7 @@ npm install
 npm run dev   # or npm start
 ```
 
-The server will start on port 4000 by default. Data is persisted to `data.db` using SQLite; tables are created automatically on first run.
+The server will start on port 4000 by default. Data is persisted to `data.db` using SQLite via **better-sqlite3**; tables are created automatically on first run.
 
 ### Endpoints
 
@@ -22,12 +24,12 @@ The server will start on port 4000 by default. Data is persisted to `data.db` us
 - `GET /api/profile` – get profile data
 - `POST /api/profile` – save profile data
 
-Data is stored in a SQLite database (`./data.db`) so it survives restarts. The in-memory storage used in earlier examples has been replaced.
+Data is stored in a SQLite database (`./data.db`) so it survives restarts.
 
-> **Deployment note:**
-> When deploying to Linux/Alpine environments (Railway, Heroku, etc.) the
-> native `sqlite3` binary must be rebuilt for the target platform. The `postinstall`
-> script in `package.json` (which runs `npm rebuild sqlite3 --build-from-source`)
-> handles this automatically and avoids runtime errors such as `invalid ELF header`.
+> **Why better-sqlite3?**  
+> `better-sqlite3` provides native prebuilt binaries for Linux/Alpine, eliminating the
+> "invalid ELF header" errors that occur when deploying `sqlite3` to containerized
+> environments like Railway, Heroku, or Docker. The synchronous API is also simpler
+> and faster for small-to-medium applications.
 
 You can expand this with a real database or additional REST resources as needed.
