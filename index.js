@@ -115,6 +115,14 @@ app.post('/api/profile', (req, res) => {
   }
 });
 
+// root healthcheck endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Agile Passion API is running 🚀',
+    status: 'ok'
+  });
+});
+
 // other endpoints could be added in similar fashion (cuentas, deudas, metas...)
 
 app.listen(port, () => {
