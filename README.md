@@ -24,4 +24,10 @@ The server will start on port 4000 by default. Data is persisted to `data.db` us
 
 Data is stored in a SQLite database (`./data.db`) so it survives restarts. The in-memory storage used in earlier examples has been replaced.
 
+> **Deployment note:**
+> When deploying to Linux/Alpine environments (Railway, Heroku, etc.) the
+> native `sqlite3` binary must be rebuilt for the target platform. The `postinstall`
+> script in `package.json` (which runs `npm rebuild sqlite3 --build-from-source`)
+> handles this automatically and avoids runtime errors such as `invalid ELF header`.
+
 You can expand this with a real database or additional REST resources as needed.
